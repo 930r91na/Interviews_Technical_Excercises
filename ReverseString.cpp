@@ -1,22 +1,30 @@
+/**
+ * @file ReverseString.cpp
+ * @author 930r91na
+ * @brief 
+ * @version 0.1
+ * @date 2022-12-13
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include <iostream>
 #include <algorithm>
-
-typedef unsigned int uint;
-
 using namespace std;
+typedef int unit;
 
-
-// To execute C++, please define "int main()"
-int main() {
-  
-  string inp = "foo bar";
-  // string inp = "";
-  if (inp.length() > 1) {
-    for (uint start = 0, end = inp.length() - 1; start < end; start++, end--) {
-      std::swap(inp[start], inp[end]);
+int main()
+{
+    string str="";
+    
+    for(unit start=0,end=str.size()-1 ;start<end;start++,end--)
+    {
+        swap(str[start],str[end]);
     }
-  }
-  
-  std::cout << inp << "\n";
-  return 0;
+    
+    cout<<str<<endl;
+    
+    return 0;
 }
+
