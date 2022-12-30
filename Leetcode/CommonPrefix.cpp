@@ -1,31 +1,24 @@
 class Solution {
 public:
-    string longestCommonPrefix(vector<string>& strs) {
-    string prefix="";
-    bool flag= true;
-    int io;
-    int j=0;
-    while(flag){
-        bool temp=true;
-        for ( int i=0 ; i<strs.size()-1 ; i++){
-            io=i;
-            if (i < strs[i].size() && i < strs[i+1].size()){
-                if (strs[i][j] != strs[i+1][j]){
-                    temp=false;
-                }
+    string commonBetween2Strs(string &str,string &str2){
+        string common="";
+        for (int i=0 ; i<max(str.size(),str2.size()) ; i++){
+            if (str[i] == str2[i]){
+                common += str[i];
             }else{
-                flag=false;
+                break;
             }
         }
-        
-        if (temp==true){
-            prefix+=strs[io][j]; 
-        }else{
-            flag=false;
-        }
-        j++;
-
+        return common;
     }
-    return prefix;  
+
+
+    string longestCommonPrefix(vector<string>& strs) {
+        string prefix=strs[0];
+        for (int i=1 ; i<strs.size(); i++){
+            prefix=commonBetween2Strs(prefix,strs[i]);
+        }
+
+        return prefix;
     }
 };
