@@ -5,31 +5,22 @@ x = 0  1
      ^
 
 */
-
 class Solution {
 public:
-    inline bool checkDuplicate (int x){
-        if (x != 0){
-            return true;
-        }else{
-            return false;
-        }
-    }
     bool containsDuplicate(vector<int>& nums) {
-        int x=0;
+        unordered_set <int> set;
+        unordered_set <int> :: iterator it;
+        pair <unordered_set <int> :: iterator ,bool> ret;
 
-        //sort values
-        sort(nums.begin(),nums.end());
-        
-        //Trvaerse array check equals in contiguos positions
-        for(int i=0 ;i < nums.size() - 1 ; i++){
-            if(nums[i] == nums[i+1]){
-            x++;
+
+        for (int i = 0; i < (int)nums.size(); i++){
+            ret = set.insert(nums[i]);
+            if (ret.second == false){
+                return true;
             }
         }
 
-      //check repetitions  
-        return checkDuplicate(x);
+        return false;
 
     }    
 };
